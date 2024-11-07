@@ -14,8 +14,8 @@ public:
         for(int i = 0; i < 24; i++) {
             int x = 1 << i; 
             int cnt = 0; 
-            for(int num : candidates) {
-                if (num & x) 
+            for(int c : candidates) {
+                if (c & x) 
                     ++cnt; 
             }
             s = max(s, cnt);
