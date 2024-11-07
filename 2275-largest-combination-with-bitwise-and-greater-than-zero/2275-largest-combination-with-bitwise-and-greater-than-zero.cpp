@@ -15,7 +15,8 @@ public:
             int x = 1 << i; 
             int cnt = 0; 
             for(int num : candidates) {
-                if (num & x) ++cnt; 
+                if (num & x) 
+                    ++cnt; 
             }
             s = max(s, cnt);
         }
