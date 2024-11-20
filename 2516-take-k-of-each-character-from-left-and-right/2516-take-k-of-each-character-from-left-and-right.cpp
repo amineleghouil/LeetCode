@@ -1,8 +1,8 @@
 class Solution {
  public:
   int takeCharacters(string s, int k) {
-    const int n = s.length();
-    int ans = n;
+     
+    int n = s.length(),ans = n;
     vector<int> v(3);
     for (const char c : s)
       v[c - 'a']++;
