@@ -5,12 +5,12 @@ public:
         for (int a : answers) {
             m[a]++;
         }
-        int total = 0;
+        int s = 0;
         for (auto& p : m) {
-            int group_size = p.first + 1;
-            int groups = (p.second + group_size - 1) / group_size;
-            total += groups * group_size;
+            int gs = p.first + 1;
+            int g = (p.second + gs - 1) / gs;
+            s += g * gs;
         }
-        return total;
+        return s;
     }
 };
