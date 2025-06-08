@@ -1,16 +1,17 @@
 class Solution {
-    static public List<Integer> lexicalOrder(int n) {
-        List<Integer> ans = new ArrayList<>();
-        for (int i = 1; i <= n; i++) {
-            ans.add(i);
+public:
+    static vector<int> lexicalOrder(int n) {
+        vector<int> ans(n);
+        int x=1;
+        for(int i=0; i<n; i++){
+            ans[i]=x;
+            if (x*10>n){
+                if (x==n) x/=10;
+                x++;
+                while(x%10==0) x/=10;
+            } 
+            else x*=10;          
         }
-
-        ans.sort((a, b) -> {
-            String s1 = String.valueOf(a);
-            String s2 = String.valueOf(b);
-            return s1.compareTo(s2);
-        });
-
         return ans;
     }
-}
+};
