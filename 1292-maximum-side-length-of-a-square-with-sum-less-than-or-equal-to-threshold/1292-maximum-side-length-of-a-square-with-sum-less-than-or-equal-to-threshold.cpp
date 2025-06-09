@@ -1,41 +1,28 @@
 class Solution {
 public:
-    int maxSideLength(vector<vector<int>>& mat, int t) {
-        
-        int m = mat.size();
-        int n = mat[0].size();
-        
-        vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
-        
-        for (int i = 1 ; i <= m ; ++i) {
-            for (int j = 1 ; j <= n ; ++j) {
-                dp[i][j] = 
-                    mat[i - 1][j - 1] + 
-                    dp[i - 1][j] + 
-                    dp[i][j - 1] - 
-                    dp[i - 1][j - 1];
-            }
+    int maxSideLength(vector<vector<int>>& v, int t) {
+        int n=v.size(),m=v[0].size();
+        for (int i=0;i<n;i++){
+            for(int j=1;j<m;j++)v[i][j]+=v[i][j-1];
         }
-        
-        int len = 0;
-        
-        for (int i = 1 ; i <= m ; ++i) {
-            for (int j = 1 ; j <= n ; ++j) {
-                int r = min(i, j);
-                
-                for (int k = 1 ; k <= r ; ++k) {
-                    int val = 
-                        dp[i][j] - 
-                        dp[i - k][j] - 
-                        dp[i][j - k] + 
-                        dp[i - k][j - k];
-                    if (val <= t) {
-                        len = max(len, k);
-                    }
+        for(int j=0;j<m;j++){
+            for(int i=1;i<n;i++)v[i][j]+=v[i-1][j];
+        }
+        int ans=0,len=1;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                int res =0 ;
+                if(i+1>=len && j+1>=len){
+                    int r=v[i][j];
+                    if(i-len >=0)r-=v[i-len][j];
+                    if(j-len >=0)r-=v[i][j-len];
+                    if(i-len>=0 && j-len>=0)r+=v[i-len][j-len];
+                    if(r<=t)res=len++;
                 }
+                ans = max(ans,res);
             }
+            
         }
-        
-        return len;
+        return ans;
     }
 };
