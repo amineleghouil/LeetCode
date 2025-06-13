@@ -1,4 +1,6 @@
-int islandPerimeter(vector<vector<int>>& grid) {
+class Solution {
+public:
+    int islandPerimeter(vector<vector<int>>& grid) {
         int count=0, repeat=0;
         for(int i=0;i<grid.size();i++)
         {
@@ -14,3 +16,4 @@ int islandPerimeter(vector<vector<int>>& grid) {
         }
         return 4*count-repeat*2;
     }
+};
