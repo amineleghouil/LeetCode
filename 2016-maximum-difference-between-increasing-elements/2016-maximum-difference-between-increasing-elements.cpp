@@ -6,6 +6,6 @@ public:
         for (int i=2;i<nums.size();++i){
             m=min(m,nums[i-1]);
             s=max(s,nums[i]-m);}
-        return s;
+        return s>0 ? s :-1;
     }
 };
