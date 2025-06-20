@@ -11,11 +11,9 @@ public:
             distances.push_back(abs(x) + abs(y));
         }
 
-        if (k == 0) {
-            return *max_element(distances.begin(), distances.end());
-        }
+        if (distances.empty()) return 0;
 
-        int maxDist = distances[1];
+        int maxDist = distances[0];
         int prev = distances[0];
         int addedBoost = 0;
 
@@ -24,9 +22,9 @@ public:
                 addedBoost += 2;
                 k--;
             }
-            prev = distances[i];
             distances[i] += addedBoost;
             maxDist = max(maxDist, distances[i]);
+            prev = distances[i] - addedBoost;
         }
 
         return maxDist;
