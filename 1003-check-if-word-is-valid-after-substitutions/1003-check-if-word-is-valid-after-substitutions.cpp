@@ -1,22 +1,25 @@
 class Solution {
 public:
     bool isValid(string s) {
-        stack<char> st ; 
-        for (int i = 0 ; i<s.size()-1; i++) st.push(s[i]);
-       
-        while (!st.empty()){
-            if(st.top()=='c'){
-                st.pop();
-                if(!st.empty() && st.top()=='b'){
-                    st.pop();
-                    if(st.size()>1 && st.top()=='a'){
-                        return true;
-                    }else continue ;
-
-                }else continue ;
-            }
+        stack<char> st; 
+        for (int i = 0; i < s.size(); i++) st.push(s[i]); 
+        stack<char> temp;
+        while (!st.empty()) {
+            char c = st.top();
             st.pop();
+            temp.push(c);
         }
-        return false ;
+        while (!temp.empty()) {
+            char c = temp.top();
+            temp.pop();
+            if (c == 'c') {
+                if (st.size() >= 2) {
+                    char b = st.top(); st.pop();
+                    char a = st.top(); st.pop();
+                    if (a != 'a' || b != 'b') return false;
+                } else return false;
+            } else st.push(c);
+        }
+        return st.empty();
     }
 };
