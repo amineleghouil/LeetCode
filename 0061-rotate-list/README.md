@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/rotate-list/?envType=study-plan-v2&envId=top-interview-150">61. Rotate List</a></h2><h3>Medium</h3><hr><p>Given the <code>head</code> of a linked&nbsp;list, rotate the list to the right by <code>k</code> places.</p>
+<h2><a href="https://leetcode.com/problems/rotate-list/">61. Rotate List</a></h2><h3>Medium</h3><hr><p>Given the <code>head</code> of a linked&nbsp;list, rotate the list to the right by <code>k</code> places.</p>
 
 <p>&nbsp;</p>
 <p><strong class="example">Example 1:</strong></p>
